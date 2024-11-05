@@ -36,7 +36,7 @@ file = File.open(image)
 
 ## Exploiting the Vulnerability
 
-The vulnerability is in the `image` variable which allows attacker can read any file (Path Traversal) by providing the `:img` parameter. However, the `../`, used for changing the directory, is replaced with empty string, so we need to bypass this filter by using `....//` so which will be converted to `../` by `gsub` method.
+The vulnerability is in the `image` variable which allows attacker can read any file (Path Traversal) by providing the `:img` parameter. However, the `../`, used for changing the directory, is replaced with empty string, so we need to bypass this filter by using `....//` which will be converted to `../` by `gsub` method.
 
 ## Building the payload 
 
