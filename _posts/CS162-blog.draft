@@ -1,0 +1,30 @@
+- examples of pointer 
+- style code to declare a pointer in C and C++
+- declare an array and how an array works, use "id[name_of_array]" as the same as "name_of_array[id]"
+
+- the difference between static mem and dynamic mem 
+- dynamic Memory in C? (alloc, malloc)
+
+- "void" pointer, casting pointer, union? 
+https://stackoverflow.com/questions/15578935/proper-way-of-casting-pointer-types
+- other types can read the same address and return the different values
+
+- how delete and new works?
+- the size of a struct?
+- the bug when initializing an array of a struct without declaring the "empty" constructor
+- examples deleting twice
+- destructor and constructor in class and their usage
+
+- we must delete a singly linked list by passing the pHead as a reference
+
+- memory layout và read-only data
+
+void deleteAtBeginning(Node*& p){
+    Node *tmp = p;
+    p = p->pNext;
+    delete tmp;
+}
+
+
+- finish code linked list and dynamic segment
+
