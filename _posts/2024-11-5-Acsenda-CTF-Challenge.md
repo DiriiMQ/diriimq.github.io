@@ -1,5 +1,5 @@
 ---
-title: Ascenda CTF Problem
+title: Ascenda CTF Challenge
 hidden: true
 # category: ctf
 # tags:
