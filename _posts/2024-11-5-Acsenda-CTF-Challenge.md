@@ -9,6 +9,8 @@ hidden: true
 
 I got the opportunity to participate in the Ascenda CTF Challenge after applying for the Internship program.
 
+**Note**: This write-up is not public yet, only people with the shared link can view it.
+
 # Problem Overview
 
 The website is built using Ruby on Rails and is hosted on Fly.io: [problem](https://hello-anya.fly.dev/). The challenge is to find the flag from the given website. 
