@@ -1,6 +1,6 @@
 ---
 title: Special challenge Cyberclass
-# category: ctf
+category: ctf
 tags:
     - cyberclass
     - bof
