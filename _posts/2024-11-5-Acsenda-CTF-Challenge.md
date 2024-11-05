@@ -44,7 +44,7 @@ In the `README.md`, the flag is stored in the `secret_file` which is not include
 
 In `config/initializers/assets.rb`, the `secret_file` is placed in a random directory inside the source code. So the format payload will be `....//<directory>/secret_file` which is passed to the `:img` parameter. (e.g `"https://hello-anya.fly.dev/?img=....//abc/secret_file"`)
 
-So I wrote a Python script to bruteforce the directory for the `secret_file`.
+So I wrote a Python script to bruteforce the directory for the `secret_file`. This script should placed in the root directory of the source code to get all the possible directories.
 
 ```python
 import os, requests
