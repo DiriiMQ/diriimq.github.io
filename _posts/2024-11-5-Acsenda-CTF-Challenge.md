@@ -24,7 +24,7 @@ Some of the key points should be noted to analyze the application:
 - `config/routes.rb`: This file contains the routing configuration for the application. It maps the URL to the controllers stored in the `app/controllers` directory.
   - `\` is mapped to `pages#index` which means the root URL will be handled by the `index` action of the `PagesController`.
   - `\user_sessions` and `\users` are used for user authentication and retrieval of user information.
-  - These actions also are used to replace date in the `*.html.erb` file to render the pages.
+  - These actions also are used to replace data in the `*.html.erb` file to render the pages.
 
 After understading 3 controllers, I found that `PagesController` render the image `anya/anya.png` if `:img` parameter is not provided, otherwise it will render the image specified in the `:img` parameter.
 
