@@ -104,7 +104,7 @@ After decoding the base64 encoded flag, I got the flag.
 
 # Extra Discussion (!!)
 
-Take a closer look at the source code, I found there is a special user `anya`. When logging in as `anya`, the `app/views/layouts/_header.html.erb` will include a secret page in the header (`<li><a href="/pages/anya">Secret Page</a></li>`). Additionally, the password of `anya` is set in `db/seeds.rb` by hasing the raw password from environment variable `ANYA_PASSWORD`. So I modified the above script to bruteforce all environment files of the system, user and also in `/proc/$ID/environ` but I couldn't find the `ANYA_PASSWORD` environment variable. So I couldn't login as `anya` to get the secret page. 
+Take a closer look at the source code, I found there is a special user `anya`. When logging in as `anya`, the `app/views/layouts/_header.html.erb` will include a secret page in the header (`<li><a href="/pages/anya">Secret Page</a></li>`). Additionally, the password of `anya` is set in `db/seeds.rb` by hasing the raw password from environment variable `ANYA_PASSWORD`. So I modified the above script to bruteforce all environment files of the system, user and also in `/proc/$PID/environ` but I couldn't find the `ANYA_PASSWORD` environment variable. So I couldn't login as `anya` to get the secret page. 
 
 However, I also found that the route `pages/anya` is not configured in `routes.rb` so that might be a bit confusing for me whether there was a hidden challenge or not.
 
