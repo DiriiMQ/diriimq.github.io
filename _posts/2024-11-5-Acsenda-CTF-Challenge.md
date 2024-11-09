@@ -17,6 +17,8 @@ The website is built using Ruby on Rails and is hosted on Fly.io: [problem](http
 
 # Solution
 
+In this section, I will explain how I solved the challenge.
+
 ## Analyzing the Application
 
 Some of the key points should be noted to analyze the application:
