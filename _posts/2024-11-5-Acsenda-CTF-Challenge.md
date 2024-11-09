@@ -89,7 +89,7 @@ for subdirectory in subdirectories:
     with open("response_" + full_url.replace('/', '_') + filename + ".html", 'w') as file:
         file.write(a.text)
 
-    print("Response saved as 'response.html'")
+    print("Response saved in response_" + full_url.replace('/', '_') + filename + ".html")
 ```
 
 After running the script, I found the `secret_file` in the  `app` and `test` directories. Get the base64 encoded flag from the response: `MTliZWRiZTY4MWM4MDgyYjNhNTBhMmFjNDQ2NmU2NjJlMzU4ZjRiMTQ0NDAwZjNhNjY4ZWJlZDNmNzVjZjhhNw==`
