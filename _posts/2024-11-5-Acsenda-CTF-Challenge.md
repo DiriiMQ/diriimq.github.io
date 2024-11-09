@@ -38,13 +38,31 @@ file = File.open(image)
 
 The vulnerability is in the `image` variable which allows attacker can read any file (Path Traversal) by providing the `:img` parameter. However, the `../`, used for changing the directory, is replaced with empty string, so we need to bypass this filter by using `....//` which will be converted to `../` by `gsub` method.
 
-## Building the payload 
+Let get a sample payload to read the `anya1.txt` file: `"https://hello-anya.fly.dev/?img=anya1.txt"` and analyze the response:
+
+```html
+...
+</nav>
+<br>
+    
+  <h1>Yororosu onegaisurumasu - Anya</h1>
+  <img class="styled-image" src="data:image/png;base64,WW9yb3Jvc3Ugb25lZ2Fpc3VydW1hc3UgLSB5b3Jvc2hpa3Ugb25lZ2Fpc2hp
+bWFzdQ==
+" />
+
+  </body>
+...
+```
+
+After decoding `"WW9yb3Jvc3Ugb25lZ2Fpc3VydW1hc3UgLSB5b3Jvc2hpa3Ugb25lZ2Fpc2hpbWFzdQ=="`, I got `"Yororosu onegaisurumasu - yoroshiku onegaishimasu"` which is the content of the `anya1.txt` file. So we have to find a way to read the `secret_file` to get the flag.
 
 In the `README.md`, the flag is stored in the `secret_file` which is not included in the source code provided. 
 
 In `config/initializers/assets.rb`, the `secret_file` is placed in a random directory inside the source code. So the format payload will be `....//<directory>/secret_file` which is passed to the `:img` parameter. (e.g `"https://hello-anya.fly.dev/?img=....//abc/secret_file"`)
 
-So I wrote a Python script to bruteforce the directory for the `secret_file`. This script should placed in the root directory of the source code to get all the possible directories.
+## Building the payload 
+
+I wrote a Python script to bruteforce the directory for the `secret_file`. This script should placed in the root directory of the source code to get all the possible directories.
 
 ```python
 import os, requests
@@ -78,12 +96,14 @@ After running the script, I found the `secret_file` in the  `app` and `test` dir
 
 ## Result
 
+After decoding the base64 encoded flag, I got the flag.
+
 **The flag** is `19bedbe681c8082b3a50a2ac4466e662e358f4b144400f3a668ebed3f75cf8a7`
 
 # Extra Discussion (!!)
 
-Take a closer look at the source code, I found there is a special user `anya`. When logging in as `anya`, the `app/views/layouts/_header.html.erb` will include a secret page in the header. Additionally, the password of `anya` is set in `db/seeds.rb` by hasing the raw password from environment variable `ANYA_PASSWORD`. So I modified the above script to bruteforce all environment files of the system, user and also in `/proc/$ID/environ` but I couldn't find the `ANYA_PASSWORD` environment variable. So I couldn't login as `anya` to get the secret page. 
+Take a closer look at the source code, I found there is a special user `anya`. When logging in as `anya`, the `app/views/layouts/_header.html.erb` will include a secret page in the header (`<li><a href="/pages/anya">Secret Page</a></li>`). Additionally, the password of `anya` is set in `db/seeds.rb` by hasing the raw password from environment variable `ANYA_PASSWORD`. So I modified the above script to bruteforce all environment files of the system, user and also in `/proc/$ID/environ` but I couldn't find the `ANYA_PASSWORD` environment variable. So I couldn't login as `anya` to get the secret page. 
 
-However, I also found that the route `pages/anya` is not configured in `routes.rb` so that might be a bit confusing for me.
+However, I also found that the route `pages/anya` is not configured in `routes.rb` so that might be a bit confusing for me whether there was a hidden challenge or not.
 
 Thank you for reading this write-up and considering my application for the internship program. I hope to hear from you soon.
