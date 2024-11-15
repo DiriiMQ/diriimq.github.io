@@ -1,15 +1,15 @@
 ---
 title: Ascenda CTF Challenge
-hidden: true
-# category: ctf
-# tags:
-#     - web
-#     - path-traversal
+# hidden: true
+category: ctf
+tags:
+    - web
+    - path-traversal
 ---
 
 I got the opportunity to participate in the Ascenda CTF Challenge after applying for the Internship program.
 
-**Note**: This write-up is not public yet, only people with the shared link can view it.
+<!-- **Note**: This write-up is not public yet, only people with the shared link can view it. -->
 
 # Problem Overview
 
@@ -108,4 +108,4 @@ Take a closer look at the source code, I found there is a special user `anya`. W
 
 However, I also found that the route `pages/anya` is not configured in `routes.rb` so that might be a bit confusing for me whether there was a hidden challenge or not.
 
-Thank you for reading this write-up and considering my application for the internship program. I hope to hear from you soon.
+<!-- Thank you for reading this write-up and considering my application for the internship program. I hope to hear from you soon. -->
